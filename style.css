@@ -1,4 +1,11 @@
 /* =========================================================
+   IT-GIRLS — OFFICIAL MEMBERSHIP RULES
+   VISUAL REFRESH ONLY
+   Theme: Forest Green / Burgundy / Gold / Parchment
+========================================================= */
+
+
+/* =========================================================
    RESET
 ========================================================= */
 
@@ -14,7 +21,7 @@ html {
 
 body {
     background: #f4eee2;
-    color: #211f1b;
+    color: #173d32;
 
     font-family: "Manrope", sans-serif;
 
@@ -27,11 +34,21 @@ body {
 ========================================================= */
 
 :root {
-    --black: #211f1b;
+    --black: #173d32;
     --cream: #f4eee2;
-    --red: #9b1e28;
-    --muted: #6c655a;
-    --line: rgba(33, 31, 27, 0.22);
+
+    --red: #7a1f2b;
+
+    --muted: #75684f;
+
+    --line: rgba(23, 61, 50, 0.22);
+
+    --gold: #b08a45;
+    --gold-light: #c9aa68;
+
+    --green-dark: #102d25;
+
+    --body-text: #514b41;
 }
 
 
@@ -71,7 +88,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 11px;
+    font-size: 12px;
 
     letter-spacing: 1.5px;
 
@@ -91,7 +108,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     text-transform: uppercase;
 
@@ -155,7 +172,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 10px;
+    font-size: 11px;
 
     text-transform: uppercase;
 }
@@ -182,9 +199,9 @@ body {
 }
 
 .hero-symbol {
-    color: var(--red);
+    color: var(--gold);
 
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .hero-content {
@@ -209,7 +226,7 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid var(--black);
+    border: 1px solid var(--green-dark);
 
     padding: 7px;
 
@@ -232,7 +249,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     letter-spacing: 2px;
 
@@ -242,19 +259,23 @@ body {
 .hero h1 {
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(70px, 10vw, 140px);
+    font-size: clamp(72px, 9vw, 128px);
 
     font-weight: 500;
 
-    line-height: .78;
+    line-height: .80;
 
     letter-spacing: -4px;
+
+    color: var(--green-dark);
 }
 
 .hero h1 span {
     font-style: italic;
 
     font-weight: 400;
+
+    color: var(--red);
 }
 
 .motto {
@@ -262,7 +283,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     letter-spacing: 1.5px;
 
@@ -280,7 +301,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     letter-spacing: 1px;
 
@@ -320,7 +341,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     letter-spacing: 1.5px;
 }
@@ -330,17 +351,21 @@ body {
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(60px, 8vw, 110px);
+    font-size: clamp(58px, 7.5vw, 100px);
 
     font-weight: 500;
 
-    line-height: .82;
+    line-height: .84;
 
     letter-spacing: -2px;
+
+    color: var(--red);
 }
 
 .intro-section h2 em {
     font-weight: 400;
+
+    color: var(--green);
 }
 
 .intro-text {
@@ -352,11 +377,11 @@ body {
 }
 
 .intro-text p {
-    color: #514b41;
+    color: var(--body-text);
 
-    font-size: 14px;
+    font-size: 16px;
 
-    line-height: 1.9;
+    line-height: 1.8;
 }
 
 
@@ -389,11 +414,13 @@ body {
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(55px, 7vw, 90px);
+    font-size: clamp(54px, 6.5vw, 84px);
 
     font-weight: 500;
 
     line-height: .85;
+
+    color: var(--red);
 }
 
 .expand-button {
@@ -409,7 +436,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     cursor: pointer;
 }
@@ -438,7 +465,7 @@ body {
 .search-icon {
     font-size: 19px;
 
-    color: var(--muted);
+    color: var(--red);
 }
 
 .search-container input {
@@ -454,7 +481,7 @@ body {
 
     font-family: "Manrope", sans-serif;
 
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .search-container input::placeholder {
@@ -507,21 +534,23 @@ body {
 .rule-name {
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 31px;
+    font-size: 32px;
 
     font-weight: 600;
+
+    color: var(--red);
 
     transition: color .25s ease;
 }
 
 .rule-header:hover .rule-name {
-    color: var(--red);
+    color: var(--gold);
 }
 
 .plus {
     font-family: "Cormorant Garamond", serif;
 
-    font-size: 25px;
+    font-size: 27px;
 
     text-align: right;
 
@@ -560,9 +589,9 @@ body {
 
     margin-bottom: 18px;
 
-    color: #51483b;
+    color: var(--body-text);
 
-    font-size: 14px;
+    font-size: 16px;
 
     line-height: 1.8;
 }
@@ -619,7 +648,7 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid var(--black);
+    border: 1px solid var(--green-dark);
 
     padding: 7px;
 }
@@ -644,27 +673,31 @@ body {
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(60px, 8vw, 105px);
+    font-size: clamp(58px, 7.5vw, 98px);
 
     font-weight: 500;
 
-    line-height: .82;
+    line-height: .84;
 
     letter-spacing: -2px;
+
+    color: var(--red);
 }
 
 .final-content h2 em {
     font-weight: 400;
+
+    color: var(--green);
 }
 
 .final-content p {
     max-width: 650px;
 
-    color: #514b41;
+    color: var(--body-text);
 
-    font-size: 14px;
+    font-size: 16px;
 
-    line-height: 1.9;
+    line-height: 1.8;
 }
 
 
@@ -689,13 +722,15 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     letter-spacing: 1px;
 }
 
 .footer-motto {
     text-align: center;
+
+    color: var(--gold);
 }
 
 .site-footer button {
@@ -709,7 +744,7 @@ body {
 
     font-family: "Space Mono", monospace;
 
-    font-size: 9px;
+    font-size: 10px;
 
     cursor: pointer;
 }
@@ -756,13 +791,19 @@ body {
     }
 
     .hero h1 {
-        font-size: 70px;
+        font-size: 64px;
 
         letter-spacing: -3px;
     }
 
     .motto {
         line-height: 1.7;
+
+        font-size: 9px;
+    }
+
+    .document-label {
+        font-size: 9px;
     }
 
 
@@ -773,11 +814,17 @@ body {
     }
 
     .intro-section h2 {
-        font-size: 65px;
+        font-size: 58px;
     }
 
     .intro-text {
         margin-top: 45px;
+    }
+
+    .intro-text p {
+        font-size: 16px;
+
+        line-height: 1.75;
     }
 
 
@@ -796,7 +843,7 @@ body {
     }
 
     .rules-heading h2 {
-        font-size: 65px;
+        font-size: 58px;
     }
 
     .rule-header {
@@ -806,7 +853,7 @@ body {
     }
 
     .rule-name {
-        font-size: 26px;
+        font-size: 27px;
 
         line-height: 1.05;
     }
@@ -815,6 +862,12 @@ body {
         padding-left: 48px;
 
         padding-right: 0;
+    }
+
+    .rule-content p {
+        font-size: 16px;
+
+        line-height: 1.75;
     }
 
     .rule.open .rule-content {
@@ -838,7 +891,13 @@ body {
     }
 
     .final-content h2 {
-        font-size: 65px;
+        font-size: 58px;
+    }
+
+    .final-content p {
+        font-size: 16px;
+
+        line-height: 1.75;
     }
 
 
@@ -850,6 +909,8 @@ body {
         grid-template-columns: 1fr;
 
         gap: 18px;
+
+        font-size: 9px;
     }
 
     .footer-motto {
