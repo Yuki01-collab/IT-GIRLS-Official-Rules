@@ -1,45 +1,37 @@
 /* =========================================================
    IT-GIRLS — OFFICIAL MEMBERSHIP RULES
-   Theme: Green / Burgundy / Gold / Parchment
-   Clean Handbook Layout
-========================================================= */
-
-
-/* =========================================================
-   01. ROOT
+   GREEN / BURGUNDY / GOLD / PARCHMENT
 ========================================================= */
 
 :root {
     --green: #173d32;
-    --green-dark: #102d25;
-    --green-soft: #285447;
-
-    --burgundy: #741f2b;
-    --burgundy-dark: #551722;
+    --green-dark: #102c24;
+    --burgundy: #761f2b;
+    --burgundy-dark: #5a1721;
 
     --gold: #b08a45;
-    --gold-light: #d1b36a;
+    --gold-light: #d0b06a;
 
     --cream: #f4eedf;
-    --parchment: #ebe2cf;
-    --paper: #f8f4e9;
+    --paper: #eee5d3;
+    --white-paper: #f8f4e9;
 
-    --ink: #24231f;
-    --muted: #6f6a5e;
+    --ink: #28251f;
+    --muted: #777064;
 
-    --border: rgba(23, 61, 50, 0.22);
-    --border-dark: rgba(244, 238, 223, 0.2);
+    --line: rgba(118, 31, 43, 0.28);
+    --green-line: rgba(23, 61, 50, 0.2);
 
     --serif: "Cormorant Garamond", Georgia, serif;
     --sans: "Manrope", Arial, sans-serif;
     --mono: "Space Mono", monospace;
 
-    --max-width: 1180px;
+    --page-width: 1180px;
 }
 
 
 /* =========================================================
-   02. RESET
+   RESET
 ========================================================= */
 
 * {
@@ -56,8 +48,6 @@ body {
     background: var(--cream);
     color: var(--ink);
     font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.7;
     overflow-x: hidden;
 }
 
@@ -77,29 +67,12 @@ input {
 }
 
 button {
-    border: 0;
-    background: none;
     cursor: pointer;
 }
 
 
 /* =========================================================
-   03. GLOBAL CONTAINER
-========================================================= */
-
-.nav-container,
-.hero-content,
-.intro-section,
-.rules-section,
-.final-content,
-.site-footer {
-    width: min(calc(100% - 48px), var(--max-width));
-    margin-inline: auto;
-}
-
-
-/* =========================================================
-   04. HEADER / NAVIGATION
+   HEADER
 ========================================================= */
 
 .site-header {
@@ -107,20 +80,31 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 50;
+    z-index: 100;
     color: var(--cream);
 }
 
 .nav-container {
-    height: 82px;
+    width: min(calc(100% - 48px), var(--page-width));
+    height: 68px;
+
+    margin: 16px auto 0;
+
+    padding: 0 20px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    border: 1px solid rgba(244, 238, 223, 0.34);
+    background: rgba(16, 44, 36, 0.2);
+
+    backdrop-filter: blur(5px);
 }
 
 .site-title {
     font-family: var(--serif);
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 600;
     letter-spacing: 0.04em;
 }
@@ -128,27 +112,53 @@ button {
 .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 34px;
+    gap: 30px;
 }
 
-.desktop-nav a,
-.mobile-menu a {
+.desktop-nav a {
+    position: relative;
+
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    transition: color 0.25s ease;
+
+    color: var(--cream);
+
+    transition: color 0.2s ease;
 }
 
-.desktop-nav a:hover,
-.mobile-menu a:hover {
+.desktop-nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--gold-light);
+
+    transition: width 0.25s ease;
+}
+
+.desktop-nav a:hover {
     color: var(--gold-light);
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
 }
 
 .menu-button {
     display: none;
+
     color: var(--cream);
-    font-size: 24px;
+    font-size: 23px;
+
+    background: transparent;
+    border: 0;
 }
 
 .mobile-menu {
@@ -157,229 +167,321 @@ button {
 
 
 /* =========================================================
-   05. HERO
+   HERO
 ========================================================= */
 
 .hero {
     position: relative;
+
     min-height: 760px;
-    padding: 145px 24px 100px;
+
+    padding: 155px 24px 105px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
     background:
         linear-gradient(
-            rgba(16, 45, 37, 0.91),
-            rgba(23, 61, 50, 0.96)
+            rgba(16, 44, 36, 0.91),
+            rgba(23, 61, 50, 0.97)
         );
+
     color: var(--cream);
+
     overflow: hidden;
 }
 
 .hero::before {
     content: "";
+
     position: absolute;
     inset: 0;
+
     opacity: 0.12;
-    pointer-events: none;
-    background-image:
+
+    background:
         repeating-linear-gradient(
             0deg,
-            transparent,
+            transparent 0px,
             transparent 3px,
-            rgba(244, 238, 223, 0.04) 4px
+            rgba(244, 238, 223, 0.05) 4px
         );
+
+    pointer-events: none;
 }
 
 .hero::after {
     content: "";
+
     position: absolute;
-    width: 500px;
-    height: 500px;
-    border: 1px solid rgba(209, 179, 106, 0.15);
-    border-radius: 50%;
+
+    width: 530px;
+    height: 530px;
+
     left: 50%;
-    top: 52%;
+    top: 54%;
+
     transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(208, 176, 106, 0.13);
+    border-radius: 50%;
+
     pointer-events: none;
 }
 
 .hero-top {
     position: relative;
     z-index: 2;
-    width: min(100%, 900px);
-    margin: 0 auto 38px;
+
     text-align: center;
+
+    margin-bottom: 28px;
 }
 
 .hero-symbol {
+    margin-bottom: 18px;
+
     color: var(--gold-light);
+
     font-family: var(--serif);
-    font-size: 30px;
-    margin-bottom: 22px;
+    font-size: 28px;
 }
 
 .hero-image {
-    width: 145px;
-    height: 145px;
-    margin: 0 auto 28px;
+    width: 135px;
+    height: 135px;
+
+    margin: 0 auto 23px;
+
     object-fit: contain;
+
     border-radius: 50%;
-    border: 1px solid rgba(209, 179, 106, 0.6);
-    padding: 10px;
+
+    border: 1px solid rgba(208, 176, 106, 0.7);
+
+    padding: 9px;
+
     background: rgba(244, 238, 223, 0.06);
 }
 
 .document-label {
     display: block;
-    margin-bottom: 17px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+
     color: var(--gold-light);
+
+    font-family: var(--mono);
+    font-size: 10px;
+
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+
+    width: min(100%, 900px);
+
+    margin: 0 auto;
+
     text-align: center;
 }
 
 .hero h1 {
     max-width: 850px;
+
     margin: 0 auto;
+
     font-family: var(--serif);
-    font-size: clamp(64px, 8vw, 108px);
+    font-size: clamp(65px, 8vw, 110px);
     font-weight: 500;
+
     line-height: 0.88;
     letter-spacing: -0.035em;
 }
 
 .motto {
-    margin-top: 28px;
+    margin-top: 24px;
+
+    color: rgba(244, 238, 223, 0.78);
+
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 11px;
+
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: rgba(244, 238, 223, 0.78);
 }
 
 .hero-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 38px;
-    padding: 13px 22px;
-    border: 1px solid rgba(209, 179, 106, 0.65);
+    display: inline-block;
+
+    margin-top: 34px;
+
+    padding: 12px 21px;
+
+    border: 1px solid rgba(208, 176, 106, 0.7);
+
     color: var(--cream);
+
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 9px;
+
     letter-spacing: 0.13em;
     text-transform: uppercase;
+
     transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .hero-link:hover {
     background: var(--gold-light);
-    border-color: var(--gold-light);
     color: var(--green-dark);
 }
 
 
 /* =========================================================
-   06. INTRODUCTION
+   INTRODUCTION
+   BIG TITLE | DESCRIPTION
 ========================================================= */
 
 .intro-section {
-    padding-top: 105px;
-    padding-bottom: 95px;
+    width: min(calc(100% - 48px), var(--page-width));
+
+    margin: 0 auto;
+
+    padding: 100px 0 92px;
+
     display: grid;
-    grid-template-columns: 0.75fr 1.6fr;
-    gap: 70px;
+
+    /*
+       THIS IS THE IMPORTANT PART.
+
+       LEFT:
+       The standard
+       we uphold.
+
+       RIGHT:
+       paragraph
+    */
+    grid-template-columns: minmax(270px, 0.75fr) minmax(0, 1.5fr);
+
+    gap: 75px;
+
     align-items: start;
 }
 
 .section-number {
-    padding-top: 8px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    padding-top: 7px;
+
     color: var(--burgundy);
+
+    font-family: var(--mono);
+    font-size: 10px;
+
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
 }
 
 .intro-text {
-    max-width: 760px;
+    display: block;
 }
 
 .intro-text h2 {
-    margin-bottom: 27px;
+    margin: 0;
+
+    color: var(--burgundy);
+
     font-family: var(--serif);
-    font-size: clamp(44px, 5vw, 68px);
+    font-size: clamp(51px, 5vw, 72px);
     font-weight: 500;
-    line-height: 0.95;
-    color: var(--green);
+
+    line-height: 0.91;
+    letter-spacing: -0.025em;
 }
 
 .intro-text p {
     max-width: 720px;
+
+    margin-top: 5px;
+
+    color: #474239;
+
     font-family: var(--serif);
-    font-size: clamp(21px, 2vw, 27px);
+    font-size: clamp(21px, 2vw, 26px);
+
     line-height: 1.48;
-    color: #454138;
 }
 
 
 /* =========================================================
-   07. RULEBOOK
+   RULEBOOK
 ========================================================= */
 
 .rules-section {
-    padding-top: 82px;
-    padding-bottom: 105px;
-    border-top: 1px solid var(--border);
+    width: min(calc(100% - 48px), var(--page-width));
+
+    margin: 0 auto;
+
+    padding: 80px 0 95px;
+
+    border-top: 1px solid var(--green-line);
 }
 
 .rules-heading {
     display: flex;
     align-items: end;
     justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 34px;
-}
 
-.rules-heading > div:first-child {
-    flex: 1;
+    gap: 30px;
+
+    margin-bottom: 28px;
 }
 
 .rules-heading > div:first-child::before {
     content: "THE RULEBOOK";
+
     display: block;
-    margin-bottom: 8px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
+
+    margin-bottom: 7px;
+
     color: var(--burgundy);
+
+    font-family: var(--mono);
+    font-size: 10px;
+
+    letter-spacing: 0.14em;
 }
 
 .rules-heading h2 {
+    color: var(--burgundy);
+
     font-family: var(--serif);
-    font-size: clamp(43px, 5vw, 65px);
+    font-size: clamp(48px, 5vw, 68px);
     font-weight: 500;
-    line-height: 0.95;
-    color: var(--green);
+
+    line-height: 0.9;
 }
 
 .expand-button {
-    flex-shrink: 0;
-    padding: 11px 17px;
-    border: 1px solid var(--border);
+    padding: 10px 16px;
+
+    border: 1px solid var(--green-line);
+
     color: var(--green);
+
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 9px;
+
     text-transform: uppercase;
     letter-spacing: 0.1em;
+
+    background: transparent;
+
     transition:
         background 0.2s ease,
         color 0.2s ease;
@@ -392,36 +494,49 @@ button {
 
 
 /* =========================================================
-   08. SEARCH
+   SEARCH
 ========================================================= */
 
 .search-container {
     position: relative;
-    margin-bottom: 24px;
-    border-bottom: 1px solid var(--border);
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid var(--green-line);
 }
 
 .search-icon {
     position: absolute;
+
     left: 0;
-    bottom: 12px;
+    bottom: 11px;
+
     color: var(--burgundy);
-    font-size: 20px;
+
+    font-size: 18px;
+
     pointer-events: none;
 }
 
 .search-container input,
 #search {
     width: 100%;
-    height: 48px;
-    padding: 0 0 0 34px;
+    height: 45px;
+
+    padding: 0 0 0 31px;
+
     border: 0;
+    outline: 0;
+
     border-radius: 0;
-    outline: none;
+
     background: transparent;
+
     color: var(--ink);
+
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 10px;
+
     letter-spacing: 0.03em;
 }
 
@@ -429,63 +544,65 @@ button {
     color: var(--muted);
 }
 
-.search-container input:focus {
-    border-color: var(--burgundy);
-}
-
 
 /* =========================================================
-   09. RULES
+   RULES
 ========================================================= */
 
 .rules {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--green-line);
 }
 
 .rule {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--green-line);
 }
 
 .rule-header {
-    display: grid;
-    grid-template-columns: 60px 1fr 32px;
-    align-items: center;
-    gap: 22px;
-    min-height: 92px;
-    padding: 16px 0;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
+    min-height: 86px;
 
-.rule-header:hover {
-    color: var(--burgundy);
+    padding: 14px 0;
+
+    display: grid;
+
+    grid-template-columns: 55px 1fr 30px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    cursor: pointer;
 }
 
 .rule-number {
-    font-family: var(--mono);
-    font-size: 11px;
     color: var(--burgundy);
-    letter-spacing: 0.05em;
+
+    font-family: var(--mono);
+    font-size: 10px;
 }
 
 .rule-name {
+    color: var(--burgundy);
+
     font-family: var(--serif);
-    font-size: clamp(27px, 3vw, 39px);
+    font-size: clamp(28px, 3vw, 39px);
     font-weight: 500;
+
     line-height: 1.05;
-    color: var(--green);
 }
 
 .plus {
+    width: 26px;
+    height: 26px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    font-family: var(--mono);
-    font-size: 20px;
-    font-weight: 400;
+
     color: var(--burgundy);
+
+    font-family: var(--mono);
+    font-size: 19px;
+
     transition: transform 0.25s ease;
 }
 
@@ -495,7 +612,8 @@ button {
 
 .rule-content {
     display: none;
-    padding: 0 55px 30px 82px;
+
+    padding: 0 45px 29px 75px;
 }
 
 .rule.active .rule-content {
@@ -504,11 +622,15 @@ button {
 
 .rule-content p {
     max-width: 760px;
-    margin-bottom: 15px;
+
+    margin-bottom: 13px;
+
+    color: #49453d;
+
     font-family: var(--serif);
-    font-size: 20px;
-    line-height: 1.55;
-    color: #4a463d;
+    font-size: 19px;
+
+    line-height: 1.52;
 }
 
 .rule-content p:last-child {
@@ -517,99 +639,153 @@ button {
 
 
 /* =========================================================
-   10. FINAL PROVISION
+   FINAL PROVISION
+   KEEP IMAGE CIRCULAR
 ========================================================= */
 
 .final-section {
     position: relative;
+
+    min-height: 530px;
+
+    padding: 80px 7%;
+
     display: grid;
+
     grid-template-columns: 0.85fr 1.15fr;
-    min-height: 540px;
+
+    align-items: center;
+
+    gap: 75px;
+
     background: var(--green);
+
     color: var(--cream);
+
     overflow: hidden;
 }
 
+
+/*
+   THE IMAGE IS NOT A FULL RECTANGLE.
+
+   It stays as the circular emblem/photo
+   from the original composition.
+*/
+
 .final-image {
-    width: 100%;
-    height: 100%;
-    min-height: 540px;
+    width: min(390px, 100%);
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto;
+
     object-fit: cover;
-    opacity: 0.72;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(208, 176, 106, 0.55);
+
+    padding: 10px;
+
+    background: rgba(244, 238, 223, 0.04);
 }
 
 .final-content {
     width: auto;
+
     margin: 0;
-    padding: 85px max(48px, calc((100vw - var(--max-width)) / 2)) 85px 65px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+    padding: 0;
+
+    display: block;
 }
 
 .final-content::before {
     content: "FINAL PROVISION";
+
     display: block;
-    margin-bottom: 13px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
+
+    margin-bottom: 10px;
+
     color: var(--gold-light);
+
+    font-family: var(--mono);
+    font-size: 10px;
+
+    letter-spacing: 0.14em;
 }
 
 .final-content h2 {
-    max-width: 600px;
-    margin-bottom: 28px;
+    max-width: 580px;
+
+    margin-bottom: 25px;
+
+    color: var(--cream);
+
     font-family: var(--serif);
-    font-size: clamp(44px, 5vw, 68px);
+    font-size: clamp(50px, 5vw, 70px);
     font-weight: 500;
-    line-height: 0.94;
+
+    line-height: 0.91;
 }
 
 .final-content p {
     max-width: 570px;
+
+    color: rgba(244, 238, 223, 0.82);
+
     font-family: var(--serif);
-    font-size: 21px;
+    font-size: 20px;
+
     line-height: 1.5;
-    color: rgba(244, 238, 223, 0.84);
 }
 
 
 /* =========================================================
-   11. FOOTER
+   FOOTER
 ========================================================= */
 
 .site-footer {
-    padding-top: 48px;
-    padding-bottom: 42px;
+    width: min(calc(100% - 48px), var(--page-width));
+
+    margin: 0 auto;
+
+    padding: 42px 0 36px;
+
     display: flex;
+
     align-items: end;
     justify-content: space-between;
+
     gap: 30px;
-    border-top: 1px solid rgba(23, 61, 50, 0.15);
 }
 
 .footer-logo {
-    font-family: var(--serif);
-    font-size: 25px;
     color: var(--green);
+
+    font-family: var(--serif);
+    font-size: 23px;
 }
 
 .footer-motto {
-    margin-top: 4px;
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
+    margin-top: 2px;
+
     color: var(--burgundy);
+
+    font-family: var(--mono);
+    font-size: 8px;
+
+    letter-spacing: 0.13em;
 }
 
 #backTop {
+    color: var(--green);
+
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 9px;
+
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--green);
-    transition: color 0.2s ease;
 }
 
 #backTop:hover {
@@ -618,17 +794,13 @@ button {
 
 
 /* =========================================================
-   12. TABLET
+   TABLET
 ========================================================= */
 
 @media (max-width: 850px) {
 
-    .nav-container,
-    .hero-content,
-    .intro-section,
-    .rules-section,
-    .site-footer {
-        width: min(calc(100% - 38px), var(--max-width));
+    .nav-container {
+        width: calc(100% - 32px);
     }
 
     .desktop-nav {
@@ -641,170 +813,113 @@ button {
 
     .mobile-menu {
         position: absolute;
-        top: 82px;
-        left: 19px;
-        right: 19px;
-        padding: 18px 20px;
+
+        top: 84px;
+        left: 16px;
+        right: 16px;
+
+        padding: 18px;
+
         background: var(--green-dark);
-        border: 1px solid rgba(209, 179, 106, 0.25);
+
+        border: 1px solid rgba(244, 238, 223, 0.25);
+
         flex-direction: column;
-        gap: 16px;
+        gap: 15px;
     }
 
     .mobile-menu.active {
         display: flex;
     }
 
-    .hero {
-        min-height: 680px;
-        padding-top: 125px;
-        padding-bottom: 80px;
-    }
-
-    .hero-image {
-        width: 125px;
-        height: 125px;
-    }
-
     .intro-section {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding-top: 75px;
-        padding-bottom: 72px;
-    }
-
-    .section-number {
-        padding-top: 0;
-    }
-
-    .rules-section {
-        padding-top: 68px;
-        padding-bottom: 75px;
-    }
-
-    .rules-heading {
-        align-items: start;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .rule-header {
-        grid-template-columns: 45px 1fr 30px;
-        gap: 15px;
-        min-height: 82px;
-    }
-
-    .rule-content {
-        padding: 0 30px 27px 60px;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 40px;
     }
 
     .final-section {
-        grid-template-columns: 1fr;
+        padding: 65px 7%;
+
+        grid-template-columns: 0.8fr 1.2fr;
+
+        gap: 45px;
     }
 
     .final-image {
-        min-height: 330px;
-        max-height: 390px;
-    }
-
-    .final-content {
-        padding: 65px 38px 72px;
-    }
-
-    .site-footer {
-        padding-top: 38px;
-        padding-bottom: 34px;
+        width: min(300px, 100%);
     }
 }
 
 
 /* =========================================================
-   13. MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 600px) {
 
-    body {
-        font-size: 15px;
-    }
-
     .nav-container {
-        height: 70px;
+        width: calc(100% - 24px);
+        height: 62px;
+
+        margin-top: 12px;
+
+        padding: 0 15px;
     }
 
     .site-title {
-        font-size: 18px;
+        font-size: 17px;
     }
 
     .mobile-menu {
-        top: 70px;
+        top: 74px;
     }
 
     .hero {
-        min-height: auto;
-        padding: 105px 20px 72px;
-    }
+        min-height: 690px;
 
-    .hero::after {
-        width: 320px;
-        height: 320px;
-    }
-
-    .hero-symbol {
-        margin-bottom: 16px;
-        font-size: 25px;
+        padding: 120px 18px 75px;
     }
 
     .hero-image {
         width: 105px;
         height: 105px;
-        margin-bottom: 22px;
-    }
-
-    .document-label {
-        font-size: 9px;
-        letter-spacing: 0.15em;
     }
 
     .hero h1 {
-        font-size: clamp(53px, 16vw, 76px);
-        line-height: 0.9;
+        font-size: clamp(54px, 15vw, 76px);
     }
 
     .motto {
-        margin-top: 21px;
-        font-size: 9px;
+        max-width: 320px;
+
+        margin: 20px auto 0;
+
+        font-size: 8px;
         line-height: 1.7;
-        letter-spacing: 0.09em;
-    }
-
-    .hero-link {
-        margin-top: 29px;
-        padding: 11px 16px;
-        font-size: 9px;
-    }
-
-    .nav-container,
-    .hero-content,
-    .intro-section,
-    .rules-section,
-    .site-footer {
-        width: calc(100% - 34px);
     }
 
     .intro-section {
-        padding-top: 58px;
-        padding-bottom: 58px;
-        gap: 14px;
+        width: calc(100% - 34px);
+
+        padding: 60px 0;
+
+        /*
+           On mobile the title is ABOVE the description.
+           Still visually connected like the desktop layout.
+        */
+        display: block;
     }
 
     .section-number {
-        font-size: 9px;
+        margin-bottom: 13px;
     }
 
     .intro-text h2 {
-        margin-bottom: 20px;
-        font-size: 43px;
+        max-width: 300px;
+
+        margin-bottom: 24px;
+
+        font-size: 50px;
     }
 
     .intro-text p {
@@ -813,131 +928,106 @@ button {
     }
 
     .rules-section {
-        padding-top: 55px;
-        padding-bottom: 60px;
+        width: calc(100% - 34px);
+
+        padding: 58px 0 65px;
     }
 
     .rules-heading {
-        margin-bottom: 27px;
-    }
+        display: block;
 
-    .rules-heading > div:first-child::before {
-        font-size: 9px;
+        margin-bottom: 25px;
     }
 
     .rules-heading h2 {
-        font-size: 43px;
+        font-size: 47px;
     }
 
     .expand-button {
-        font-size: 9px;
-        padding: 9px 13px;
-    }
-
-    .search-container {
-        margin-bottom: 17px;
-    }
-
-    .search-container input,
-    #search {
-        height: 44px;
-        font-size: 10px;
-    }
-
-    .search-icon {
-        bottom: 10px;
-        font-size: 17px;
+        margin-top: 18px;
     }
 
     .rule-header {
-        grid-template-columns: 31px 1fr 26px;
-        gap: 10px;
-        min-height: 76px;
-        padding: 13px 0;
-    }
+        min-height: 74px;
 
-    .rule-number {
-        font-size: 9px;
+        grid-template-columns: 30px 1fr 25px;
+
+        gap: 9px;
     }
 
     .rule-name {
         font-size: 25px;
-        line-height: 1.08;
-    }
-
-    .plus {
-        width: 24px;
-        height: 24px;
-        font-size: 17px;
     }
 
     .rule-content {
-        padding: 0 5px 24px 41px;
+        padding: 0 5px 25px 39px;
     }
 
     .rule-content p {
         font-size: 18px;
         line-height: 1.5;
-        margin-bottom: 13px;
+    }
+
+    .final-section {
+        min-height: auto;
+
+        padding: 60px 25px 65px;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 45px;
+
+        text-align: center;
     }
 
     .final-image {
-        min-height: 270px;
-        max-height: 310px;
+        width: min(270px, 78vw);
+        height: auto;
+
+        margin: 0 auto;
     }
 
     .final-content {
-        padding: 52px 25px 58px;
-    }
-
-    .final-content::before {
-        font-size: 9px;
+        text-align: center;
     }
 
     .final-content h2 {
-        margin-bottom: 20px;
-        font-size: 43px;
+        font-size: 48px;
     }
 
     .final-content p {
         font-size: 18px;
-        line-height: 1.5;
     }
 
     .site-footer {
-        padding-top: 30px;
-        padding-bottom: 28px;
+        width: calc(100% - 34px);
+
+        padding: 32px 0;
+
         align-items: center;
     }
 
     .footer-logo {
         font-size: 20px;
     }
-
-    .footer-motto {
-        font-size: 7px;
-    }
-
-    #backTop {
-        font-size: 8px;
-    }
 }
 
 
 /* =========================================================
-   14. VERY SMALL PHONES
+   SMALL PHONES
 ========================================================= */
 
 @media (max-width: 380px) {
 
     .hero h1 {
-        font-size: 50px;
+        font-size: 51px;
     }
 
     .intro-text h2,
     .rules-heading h2,
     .final-content h2 {
-        font-size: 39px;
+        font-size: 42px;
     }
 
     .intro-text p,
@@ -948,32 +1038,5 @@ button {
 
     .rule-name {
         font-size: 22px;
-    }
-
-    .rule-header {
-        grid-template-columns: 28px 1fr 23px;
-        gap: 8px;
-    }
-
-    .rule-content {
-        padding-left: 36px;
-    }
-}
-
-
-/* =========================================================
-   15. REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        transition-duration: 0.01ms !important;
     }
 }
