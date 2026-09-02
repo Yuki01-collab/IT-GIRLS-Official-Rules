@@ -1,5 +1,5 @@
 /* =========================================================
-   IT-GIRLS — RULES INTERACTIONS
+   IT-GIRLS RULES — INTERACTIVE FUNCTIONS
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,9 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ====================================================== */
 
     const rules = document.querySelectorAll(".rule");
-    const ruleButtons = document.querySelectorAll(".rule-header");
 
-    ruleButtons.forEach(button => {
+    document.querySelectorAll(".rule-header").forEach(button => {
 
         button.addEventListener("click", () => {
 
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             button.setAttribute(
                 "aria-expanded",
-                !isOpen
+                String(!isOpen)
             );
 
         });
@@ -36,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
        EXPAND / COLLAPSE ALL
     ====================================================== */
 
-    const expandButton = document.getElementById("expandAll");
+    const expandButton =
+        document.getElementById("expandAll");
 
     expandButton.addEventListener("click", () => {
 
@@ -53,13 +53,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
             button.setAttribute(
                 "aria-expanded",
-                !allOpen
+                String(!allOpen)
             );
 
         });
 
         expandButton.textContent =
             allOpen ? "Expand all" : "Collapse all";
+
+    });
+
+
+    /* =====================================================
+       SEARCH
+    ====================================================== */
+
+    const searchInput =
+        document.getElementById("search");
+
+    searchInput.addEventListener("input", () => {
+
+        const query =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+        rules.forEach(rule => {
+
+            const searchableText =
+                rule.dataset.search.toLowerCase();
+
+            if (
+                query === "" ||
+                searchableText.includes(query)
+            ) {
+
+                rule.style.display = "";
+
+            } else {
+
+                rule.style.display = "none";
+
+            }
+
+        });
 
     });
 
@@ -74,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenu =
         document.getElementById("mobileMenu");
 
-
     menuButton.addEventListener("click", () => {
 
         mobileMenu.classList.toggle("open");
@@ -82,18 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileMenu.classList.contains("open")) {
 
             menuButton.textContent = "×";
-            menuButton.setAttribute(
-                "aria-label",
-                "Close menu"
-            );
 
         } else {
 
             menuButton.textContent = "☰";
-            menuButton.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
 
         }
 
@@ -101,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CLOSE MOBILE MENU AFTER CLICK
+       CLOSE MOBILE MENU WHEN LINK IS CLICKED
     ====================================================== */
 
     document
@@ -114,11 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 menuButton.textContent = "☰";
 
-                menuButton.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-
             });
 
         });
@@ -128,24 +151,23 @@ document.addEventListener("DOMContentLoaded", () => {
        BACK TO TOP
     ====================================================== */
 
-    const backTop =
-        document.getElementById("backTop");
+    document
+        .getElementById("backTop")
+        .addEventListener("click", () => {
 
-    backTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
         });
-
-    });
 
 
     /* =====================================================
        OPEN RULE FROM URL HASH
        
        Example:
-       index.html#rule-02
+       index.html#rule-ii
     ====================================================== */
 
     if (window.location.hash) {
