@@ -1,7 +1,7 @@
 /* =========================================================
    IT-GIRLS — OFFICIAL MEMBERSHIP RULES
-   VISUAL REFRESH ONLY
-   Theme: Forest Green / Burgundy / Gold / Parchment
+   VISUAL REFRESH
+   Background + Typography Only
 ========================================================= */
 
 
@@ -20,11 +20,9 @@ html {
 }
 
 body {
-    background: #f4eee2;
-    color: #173d32;
-
+    background: #e9dfca;
+    color: #211f1b;
     font-family: "Manrope", sans-serif;
-
     overflow-x: hidden;
 }
 
@@ -34,19 +32,22 @@ body {
 ========================================================= */
 
 :root {
-    --black: #173d32;
-    --cream: #f4eee2;
+    --black: #211f1b;
 
-    --red: #7a1f2b;
+    /* MAIN BACKGROUND */
+    --cream: #e9dfca;
 
-    --muted: #75684f;
+    /* SECONDARY BACKGROUND */
+    --paper: #f2eadb;
 
-    --line: rgba(23, 61, 50, 0.22);
+    /* ACCENT */
+    --red: #8f2430;
 
-    --gold: #b08a45;
-    --gold-light: #c9aa68;
+    /* MUTED TEXT */
+    --muted: #6c655a;
 
-    --green-dark: #102d25;
+    /* VERY LIGHT LINES */
+    --line: rgba(33, 31, 27, 0.16);
 
     --body-text: #514b41;
 }
@@ -62,7 +63,7 @@ body {
 
     width: 100%;
 
-    background: rgba(244, 238, 226, 0.96);
+    background: rgba(233, 223, 202, 0.96);
 
     border-bottom: 1px solid var(--line);
 
@@ -199,7 +200,7 @@ body {
 }
 
 .hero-symbol {
-    color: var(--gold);
+    color: var(--red);
 
     font-size: 24px;
 }
@@ -226,7 +227,7 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid var(--green-dark);
+    border: 1px solid var(--black);
 
     padding: 7px;
 
@@ -266,16 +267,12 @@ body {
     line-height: .80;
 
     letter-spacing: -4px;
-
-    color: var(--green-dark);
 }
 
 .hero h1 span {
     font-style: italic;
 
     font-weight: 400;
-
-    color: var(--red);
 }
 
 .motto {
@@ -328,7 +325,10 @@ body {
 
     margin: auto;
 
-    padding: 100px 45px 120px;
+    /*
+       REDUCED THE LARGE HOLLOW SPACE
+    */
+    padding: 70px 45px 75px;
 
     border-top: 1px solid var(--black);
 }
@@ -347,25 +347,21 @@ body {
 }
 
 .intro-section h2 {
-    margin-top: 25px;
+    margin-top: 18px;
 
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(58px, 7.5vw, 100px);
+    font-size: clamp(58px, 7vw, 96px);
 
     font-weight: 500;
 
-    line-height: .84;
+    line-height: .86;
 
     letter-spacing: -2px;
-
-    color: var(--red);
 }
 
 .intro-section h2 em {
     font-weight: 400;
-
-    color: var(--green);
 }
 
 .intro-text {
@@ -373,7 +369,10 @@ body {
 
     margin-left: auto;
 
-    margin-top: 60px;
+    /*
+       LESS EMPTY SPACE ABOVE PARAGRAPH
+    */
+    margin-top: 38px;
 }
 
 .intro-text p {
@@ -394,7 +393,7 @@ body {
 
     margin: auto;
 
-    padding: 100px 45px 130px;
+    padding: 85px 45px 110px;
 }
 
 .rules-heading {
@@ -404,13 +403,13 @@ body {
 
     justify-content: space-between;
 
-    padding-bottom: 25px;
+    padding-bottom: 22px;
 
-    border-bottom: 1px solid var(--black);
+    border-bottom: 1px solid var(--line);
 }
 
 .rules-heading h2 {
-    margin-top: 20px;
+    margin-top: 18px;
 
     font-family: "Cormorant Garamond", serif;
 
@@ -419,8 +418,6 @@ body {
     font-weight: 500;
 
     line-height: .85;
-
-    color: var(--red);
 }
 
 .expand-button {
@@ -446,6 +443,12 @@ body {
    SEARCH
 ========================================================= */
 
+/*
+   CLEAN SEARCH
+   No surrounding box.
+   No extra top/bottom borders.
+*/
+
 .search-container {
     display: flex;
 
@@ -453,19 +456,21 @@ body {
 
     gap: 10px;
 
-    margin: 30px 0;
-
-    border-bottom: 1px solid var(--line);
-
-    padding-bottom: 12px;
+    margin: 25px 0 28px;
 
     max-width: 400px;
+
+    padding: 0;
+
+    border: none;
 }
 
 .search-icon {
-    font-size: 19px;
+    font-size: 18px;
 
-    color: var(--red);
+    color: var(--muted);
+
+    flex-shrink: 0;
 }
 
 .search-container input {
@@ -481,7 +486,9 @@ body {
 
     font-family: "Manrope", sans-serif;
 
-    font-size: 13px;
+    font-size: 14px;
+
+    padding: 8px 0;
 }
 
 .search-container input::placeholder {
@@ -538,13 +545,11 @@ body {
 
     font-weight: 600;
 
-    color: var(--red);
-
     transition: color .25s ease;
 }
 
 .rule-header:hover .rule-name {
-    color: var(--gold);
+    color: var(--red);
 }
 
 .plus {
@@ -627,7 +632,7 @@ body {
 
     margin: auto;
 
-    padding: 110px 45px 140px;
+    padding: 90px 45px 110px;
 
     border-top: 1px solid var(--black);
 
@@ -648,7 +653,7 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid var(--green-dark);
+    border: 1px solid var(--black);
 
     padding: 7px;
 }
@@ -667,9 +672,9 @@ body {
 }
 
 .final-content h2 {
-    margin-top: 25px;
+    margin-top: 22px;
 
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 
     font-family: "Cormorant Garamond", serif;
 
@@ -680,14 +685,10 @@ body {
     line-height: .84;
 
     letter-spacing: -2px;
-
-    color: var(--red);
 }
 
 .final-content h2 em {
     font-weight: 400;
-
-    color: var(--green);
 }
 
 .final-content p {
@@ -712,7 +713,7 @@ body {
 
     padding: 25px 45px;
 
-    border-top: 1px solid var(--black);
+    border-top: 1px solid var(--line);
 
     display: grid;
 
@@ -729,8 +730,6 @@ body {
 
 .footer-motto {
     text-align: center;
-
-    color: var(--gold);
 }
 
 .site-footer button {
@@ -802,15 +801,11 @@ body {
         font-size: 9px;
     }
 
-    .document-label {
-        font-size: 9px;
-    }
-
 
     /* INTRO */
 
     .intro-section {
-        padding: 75px 22px 90px;
+        padding: 55px 22px 65px;
     }
 
     .intro-section h2 {
@@ -818,7 +813,7 @@ body {
     }
 
     .intro-text {
-        margin-top: 45px;
+        margin-top: 35px;
     }
 
     .intro-text p {
@@ -831,7 +826,7 @@ body {
     /* RULES */
 
     .rules-section {
-        padding: 75px 22px 100px;
+        padding: 65px 22px 90px;
     }
 
     .rules-heading {
@@ -878,7 +873,7 @@ body {
     /* FINAL */
 
     .final-section {
-        padding: 80px 22px 100px;
+        padding: 70px 22px 90px;
 
         grid-template-columns: 1fr;
 
