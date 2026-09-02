@@ -4,19 +4,18 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
     /* =====================================================
        RULE ACCORDIONS
     ====================================================== */
 
     const rules = document.querySelectorAll(".rule");
+    const ruleButtons = document.querySelectorAll(".rule-header");
 
-    document.querySelectorAll(".rule-header").forEach(button => {
+    ruleButtons.forEach(button => {
 
         button.addEventListener("click", () => {
 
             const rule = button.closest(".rule");
-
             const isOpen = rule.classList.contains("open");
 
             rule.classList.toggle("open", !isOpen);
@@ -35,70 +34,84 @@ document.addEventListener("DOMContentLoaded", () => {
        EXPAND / COLLAPSE ALL
     ====================================================== */
 
-    const expandButton =
-        document.getElementById("expandAll");
+    const expandButton = document.getElementById("expandAll");
 
-    expandButton.addEventListener("click", () => {
+    if (expandButton) {
 
-        const allOpen = [...rules].every(rule =>
-            rule.classList.contains("open")
-        );
+        expandButton.addEventListener("click", () => {
 
-        rules.forEach(rule => {
-
-            rule.classList.toggle("open", !allOpen);
-
-            const button =
-                rule.querySelector(".rule-header");
-
-            button.setAttribute(
-                "aria-expanded",
-                String(!allOpen)
+            const allOpen = [...rules].every(rule =>
+                rule.classList.contains("open")
             );
+
+            rules.forEach(rule => {
+
+                rule.classList.toggle("open", !allOpen);
+
+                const button =
+                    rule.querySelector(".rule-header");
+
+                if (button) {
+                    button.setAttribute(
+                        "aria-expanded",
+                        String(!allOpen)
+                    );
+                }
+
+            });
+
+            expandButton.textContent =
+                allOpen
+                    ? "Expand all"
+                    : "Collapse all";
 
         });
 
-        expandButton.textContent =
-            allOpen ? "Expand all" : "Collapse all";
-
-    });
+    }
 
 
     /* =====================================================
        SEARCH
     ====================================================== */
 
-    const searchInput =
-        document.getElementById("search");
+    const searchInput = document.getElementById("search");
 
-    searchInput.addEventListener("input", () => {
+    if (searchInput) {
 
-        const query =
-            searchInput.value
-                .toLowerCase()
-                .trim();
+        searchInput.addEventListener("input", () => {
 
-        rules.forEach(rule => {
+            const query =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
 
-            const searchableText =
-                rule.dataset.search.toLowerCase();
+            rules.forEach(rule => {
 
-            if (
-                query === "" ||
-                searchableText.includes(query)
-            ) {
+                const searchableText =
+                    (
+                        rule.dataset.search +
+                        " " +
+                        rule.textContent
+                    ).toLowerCase();
 
-                rule.style.display = "";
+                if (
+                    query === "" ||
+                    searchableText.includes(query)
+                ) {
 
-            } else {
+                    rule.style.display = "";
 
-                rule.style.display = "none";
+                } else {
 
-            }
+                    rule.style.display = "none";
+
+                }
+
+            });
 
         });
 
-    });
+    }
 
 
     /* =====================================================
@@ -111,49 +124,82 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenu =
         document.getElementById("mobileMenu");
 
-    menuButton.addEventListener("click", () => {
+    if (menuButton && mobileMenu) {
 
-        mobileMenu.classList.toggle("open");
+        menuButton.addEventListener("click", () => {
 
-        if (mobileMenu.classList.contains("open")) {
+            const isOpen =
+                mobileMenu.classList.toggle("open");
 
-            menuButton.textContent = "×";
+            menuButton.textContent =
+                isOpen ? "×" : "☰";
 
-        } else {
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
 
-            menuButton.textContent = "☰";
-
-        }
-
-    });
+        });
 
 
-    /* =====================================================
-       CLOSE MOBILE MENU WHEN LINK IS CLICKED
-    ====================================================== */
+        /* CLOSE MENU AFTER CLICKING A LINK */
 
-    document
-        .querySelectorAll(".mobile-menu a")
-        .forEach(link => {
+        mobileMenu
+            .querySelectorAll("a")
+            .forEach(link => {
 
-            link.addEventListener("click", () => {
+                link.addEventListener("click", () => {
+
+                    mobileMenu.classList.remove("open");
+
+                    menuButton.textContent = "☰";
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+
+
+        /* CLOSE MENU WHEN CLICKING OUTSIDE */
+
+        document.addEventListener("click", event => {
+
+            if (
+                mobileMenu.classList.contains("open") &&
+                !mobileMenu.contains(event.target) &&
+                !menuButton.contains(event.target)
+            ) {
 
                 mobileMenu.classList.remove("open");
 
                 menuButton.textContent = "☰";
 
-            });
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
 
         });
+
+    }
 
 
     /* =====================================================
        BACK TO TOP
     ====================================================== */
 
-    document
-        .getElementById("backTop")
-        .addEventListener("click", () => {
+    const backTop =
+        document.getElementById("backTop");
+
+    if (backTop) {
+
+        backTop.addEventListener("click", () => {
 
             window.scrollTo({
                 top: 0,
@@ -161,6 +207,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
         });
+
+    }
 
 
     /* =====================================================
@@ -185,15 +233,20 @@ document.addEventListener("DOMContentLoaded", () => {
             const button =
                 target.querySelector(".rule-header");
 
-            button.setAttribute(
-                "aria-expanded",
-                "true"
-            );
+            if (button) {
+
+                button.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+            }
 
             setTimeout(() => {
 
                 target.scrollIntoView({
-                    behavior: "smooth"
+                    behavior: "smooth",
+                    block: "start"
                 });
 
             }, 300);
