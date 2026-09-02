@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>IT-GIRLS — Rules</title>
+    <title>IT-GIRLS | Rules</title>
 
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -18,402 +19,466 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
 
-    <header class="site-header">
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-        <div class="header-inner">
+<header class="site-header">
 
-            <a href="#home" class="brand">
-                IT-GIRLS
-            </a>
+    <div class="nav-container">
 
-            <nav class="desktop-nav">
-                <a href="#home">Home</a>
-                <a href="#rules">Rules</a>
-                <a href="#about">About</a>
-            </nav>
+        <a href="#home" class="site-title">
+            IT-GIRLS ISÓTITA TELOS
+        </a>
 
-            <button class="menu-button" id="menuButton" aria-label="Open menu">
-                ☰
-            </button>
+        <nav class="desktop-nav">
 
-        </div>
+            <a href="#home">Home</a>
+            <a href="#rules">Rules</a>
+            <a href="#final">Final Provision</a>
 
-    </header>
+        </nav>
 
-
-    <!-- =====================================================
-         MOBILE MENU
-    ====================================================== -->
-
-    <div class="mobile-menu" id="mobileMenu">
-
-        <a href="#home">Home</a>
-        <a href="#rules">Rules</a>
-        <a href="#about">About</a>
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
 
     </div>
 
+</header>
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
 
-    <main>
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
 
-        <section class="hero" id="home">
+<div class="mobile-menu" id="mobileMenu">
 
-            <div class="hero-text">
+    <a href="#home">Home</a>
+    <a href="#rules">Rules</a>
+    <a href="#final">Final Provision</a>
 
-                <p class="eyebrow">
-                    IT-GIRLS / OFFICIAL RULES
-                </p>
+</div>
 
-                <h1>
-                    How We<br>
-                    <em>Carry Ourselves.</em>
-                </h1>
 
-                <p class="hero-description">
-                    The specific rules that guide how every member
-                    of IT-GIRLS treats others, participates, and
-                    contributes to the sorority.
-                </p>
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-                <a href="#rules" class="hero-link">
-                    READ THE RULES ↓
-                </a>
+<main id="home">
+
+    <section class="hero">
+
+        <div class="hero-top">
+
+            <span class="hero-symbol">❧</span>
+
+        </div>
+
+
+        <div class="hero-content">
+
+            <div class="hero-image">
+
+                <img
+                    src="assets/it-girls-logo.jpg"
+                    alt="IT-GIRLS Sorority Logo"
+                >
 
             </div>
 
 
-            <div class="hero-visual">
+            <p class="document-label">
+                OFFICIAL MEMBERSHIP RULES
+            </p>
 
-                <div class="image-frame">
 
-                    <img
-                        src="assets/it-girls-logo.jpg"
-                        alt="IT-GIRLS Logo"
-                    >
+            <h1>
+                Rules &amp;<br>
+                <span>Standards</span>
+            </h1>
 
-                </div>
 
-                <span class="vertical-label">
-                    EST. IT-GIRLS
+            <p class="motto">
+                ISÓTITA TELOS — Equality is the Goal
+            </p>
+
+
+            <a href="#rules" class="hero-link">
+                ENTER THE RULEBOOK ↓
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RULES INTRO
+    ====================================================== -->
+
+    <section class="intro-section">
+
+        <span class="section-number">
+            00 · INTRODUCTION
+        </span>
+
+        <h2>
+            The standard<br>
+            <em>we uphold.</em>
+        </h2>
+
+        <div class="intro-text">
+
+            <p>
+                These rules establish the standards expected of
+                every member of the IT-GIRLS Sorority. They exist
+                to ensure that every member is heard, respected,
+                treated fairly, and able to participate in a safe
+                and supportive community.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RULES
+========================================================= -->
+
+    <section class="rules-section" id="rules">
+
+        <div class="rules-heading">
+
+            <div>
+
+                <span class="section-label">
+                    THE RULEBOOK
                 </span>
 
+                <h2>
+                    Specific Rules
+                </h2>
+
             </div>
 
-        </section>
+
+            <button
+                id="expandAll"
+                class="expand-button"
+            >
+                Expand all
+            </button>
+
+        </div>
 
 
-        <!-- =====================================================
-             RULES
-        ====================================================== -->
+        <div class="search-container">
 
-        <section class="rules-section" id="rules">
+            <span class="search-icon">⌕</span>
 
-            <div class="section-heading">
+            <input
+                type="text"
+                id="search"
+                placeholder="Search rules..."
+                autocomplete="off"
+            >
 
-                <div>
+        </div>
 
-                    <p class="section-label">
-                        ARTICLE / RULES
+
+        <div class="rules">
+
+
+            <!-- =================================================
+                 RULE I
+            ================================================== -->
+
+            <article
+                class="rule"
+                id="rule-i"
+                data-search="equal voice participation opinions concerns equal opportunity discussions organizational decisions"
+            >
+
+                <button
+                    class="rule-header"
+                    aria-expanded="false"
+                    aria-controls="rule-content-i"
+                >
+
+                    <span class="rule-number">
+                        I
+                    </span>
+
+                    <span class="rule-name">
+                        Equal Voice and Participation
+                    </span>
+
+                    <span class="plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="rule-content"
+                    id="rule-content-i"
+                >
+
+                    <p>
+                        Every member has the right to express their
+                        opinions and concerns.
                     </p>
 
-                    <h2>
-                        The Rules
-                    </h2>
+                    <p>
+                        Everyone must be given an equal opportunity
+                        to participate in discussions and
+                        organizational decisions.
+                    </p>
 
                 </div>
 
-                <button id="expandAll" class="expand-button">
-                    Expand all
+            </article>
+
+
+            <!-- =================================================
+                 RULE II
+            ================================================== -->
+
+            <article
+                class="rule"
+                id="rule-ii"
+                data-search="inclusion respect differences background beliefs personality experiences bullying discrimination"
+            >
+
+                <button
+                    class="rule-header"
+                    aria-expanded="false"
+                    aria-controls="rule-content-ii"
+                >
+
+                    <span class="rule-number">
+                        II
+                    </span>
+
+                    <span class="rule-name">
+                        Inclusion and Respect
+                    </span>
+
+                    <span class="plus">
+                        +
+                    </span>
+
                 </button>
 
-            </div>
 
+                <div
+                    class="rule-content"
+                    id="rule-content-ii"
+                >
 
-            <div class="rules-intro">
+                    <p>
+                        Members must respect differences in
+                        background, beliefs, personality, and
+                        experiences.
+                    </p>
 
-                <p>
-                    Every member of IT-GIRLS is expected to understand
-                    and follow these rules. They exist to ensure that
-                    everyone is heard, respected, treated fairly, and
-                    able to participate in a safe environment.
-                </p>
+                    <p>
+                        Bullying and discrimination are strictly
+                        prohibited.
+                    </p>
 
-            </div>
+                </div>
 
+            </article>
 
-            <div class="rules">
 
+            <!-- =================================================
+                 RULE III
+            ================================================== -->
 
-                <!-- =================================================
-                     RULE 01
-                ================================================== -->
+            <article
+                class="rule"
+                id="rule-iii"
+                data-search="fairness leadership roles projects opportunities contribution activities equal chance"
+            >
 
-                <article class="rule" id="rule-01">
+                <button
+                    class="rule-header"
+                    aria-expanded="false"
+                    aria-controls="rule-content-iii"
+                >
 
-                    <button
-                        class="rule-header"
-                        aria-expanded="false"
-                        aria-controls="rule-content-01"
-                    >
+                    <span class="rule-number">
+                        III
+                    </span>
 
-                        <span class="rule-number">
-                            01
-                        </span>
+                    <span class="rule-name">
+                        Fairness
+                    </span>
 
-                        <span class="rule-name">
-                            Equal Voice and Participation
-                        </span>
+                    <span class="plus">
+                        +
+                    </span>
 
-                        <span class="plus">
-                            +
-                        </span>
+                </button>
 
-                    </button>
 
+                <div
+                    class="rule-content"
+                    id="rule-content-iii"
+                >
 
-                    <div
-                        class="rule-content"
-                        id="rule-content-01"
-                    >
+                    <p>
+                        Every member should have an equal chance
+                        to take on leadership roles, join projects,
+                        and receive opportunities.
+                    </p>
 
-                        <p>
-                            Every member has the right to express their
-                            opinions and concerns.
-                        </p>
+                    <p>
+                        Members are also expected to do their part
+                        and contribute to the Sorority's activities.
+                    </p>
 
-                        <p>
-                            Everyone must be given an equal opportunity
-                            to participate in discussions and
-                            organizational decisions.
-                        </p>
+                </div>
 
-                    </div>
+            </article>
 
-                </article>
 
+            <!-- =================================================
+                 RULE IV
+            ================================================== -->
 
-                <!-- =================================================
-                     RULE 02
-                ================================================== -->
+            <article
+                class="rule"
+                id="rule-iv"
+                data-search="sisterhood safety trust support safe comfortable community hazing violence intimidation"
+            >
 
-                <article class="rule" id="rule-02">
+                <button
+                    class="rule-header"
+                    aria-expanded="false"
+                    aria-controls="rule-content-iv"
+                >
 
-                    <button
-                        class="rule-header"
-                        aria-expanded="false"
-                        aria-controls="rule-content-02"
-                    >
+                    <span class="rule-number">
+                        IV
+                    </span>
 
-                        <span class="rule-number">
-                            02
-                        </span>
+                    <span class="rule-name">
+                        Sisterhood, Safety, and Trust
+                    </span>
 
-                        <span class="rule-name">
-                            Inclusion and Respect
-                        </span>
+                    <span class="plus">
+                        +
+                    </span>
 
-                        <span class="plus">
-                            +
-                        </span>
+                </button>
 
-                    </button>
 
+                <div
+                    class="rule-content"
+                    id="rule-content-iv"
+                >
 
-                    <div
-                        class="rule-content"
-                        id="rule-content-02"
-                    >
+                    <p>
+                        Members should support and look out for
+                        one another while creating a safe and
+                        comfortable community.
+                    </p>
 
-                        <p>
-                            Members must respect differences in
-                            background, beliefs, personality, and
-                            experiences.
-                        </p>
+                    <p>
+                        Hazing, violence, and intimidation are
+                        not allowed.
+                    </p>
 
-                        <p>
-                            Bullying and discrimination are strictly
-                            prohibited.
-                        </p>
+                </div>
 
-                    </div>
+            </article>
 
-                </article>
 
+        </div>
 
-                <!-- =================================================
-                     RULE 03
-                ================================================== -->
-
-                <article class="rule" id="rule-03">
-
-                    <button
-                        class="rule-header"
-                        aria-expanded="false"
-                        aria-controls="rule-content-03"
-                    >
-
-                        <span class="rule-number">
-                            03
-                        </span>
-
-                        <span class="rule-name">
-                            Fairness
-                        </span>
-
-                        <span class="plus">
-                            +
-                        </span>
-
-                    </button>
-
-
-                    <div
-                        class="rule-content"
-                        id="rule-content-03"
-                    >
-
-                        <p>
-                            Every member should have an equal chance
-                            to take on leadership roles, join projects,
-                            and receive opportunities.
-                        </p>
-
-                        <p>
-                            Members are also expected to do their part
-                            and contribute to the sorority's activities.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- =================================================
-                     RULE 04
-                ================================================== -->
-
-                <article class="rule" id="rule-04">
-
-                    <button
-                        class="rule-header"
-                        aria-expanded="false"
-                        aria-controls="rule-content-04"
-                    >
-
-                        <span class="rule-number">
-                            04
-                        </span>
-
-                        <span class="rule-name">
-                            Sisterhood, Safety, and Trust
-                        </span>
-
-                        <span class="plus">
-                            +
-                        </span>
-
-                    </button>
-
-
-                    <div
-                        class="rule-content"
-                        id="rule-content-04"
-                    >
-
-                        <p>
-                            Members should support and look out for
-                            one another while creating a safe and
-                            comfortable community.
-                        </p>
-
-                        <p>
-                            Hazing, violence, and intimidation are
-                            not allowed.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             ABOUT
-        ====================================================== -->
-
-        <section class="about-section" id="about">
-
-            <div class="about-number">
-                IT-GIRLS
-            </div>
-
-            <div class="about-content">
-
-                <p class="section-label">
-                    OUR STANDARD
-                </p>
-
-                <h2>
-                    Respect is<br>
-                    <em>non-negotiable.</em>
-                </h2>
-
-                <p>
-                    These rules establish the standard expected from
-                    every IT-GIRL. Membership means having a voice,
-                    respecting others, contributing fairly, and
-                    protecting the trust within the community.
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
+    </section>
 
 
     <!-- =====================================================
-         FOOTER
+         FINAL PROVISION
     ====================================================== -->
 
-    <footer class="site-footer">
+    <section
+        class="final-section"
+        id="final"
+    >
 
-        <div>
-            <span class="footer-brand">
-                IT-GIRLS
+        <div class="final-image">
+
+            <img
+                src="assets/it-girls-logo.jpg"
+                alt="IT-GIRLS emblem"
+            >
+
+        </div>
+
+
+        <div class="final-content">
+
+            <span class="section-label">
+                FINAL PROVISION
             </span>
+
+            <h2>
+                The standard<br>
+                <em>starts with us.</em>
+            </h2>
+
+            <p>
+                Every member of IT-GIRLS is expected to uphold
+                these rules and contribute to an environment built
+                on equality, respect, fairness, sisterhood, safety,
+                and trust.
+            </p>
+
         </div>
 
-        <div>
-            <span>
-                OFFICIAL RULES
-            </span>
-        </div>
-
-        <div>
-            <button id="backTop">
-                BACK TO TOP ↑
-            </button>
-        </div>
-
-    </footer>
+    </section>
 
 
-    <script src="script.js"></script>
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-logo">
+        IT-GIRLS ISÓTITA TELOS
+    </div>
+
+    <div class="footer-motto">
+        EQUALITY IS THE GOAL
+    </div>
+
+    <button id="backTop">
+        ↑ TOP
+    </button>
+
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
 
