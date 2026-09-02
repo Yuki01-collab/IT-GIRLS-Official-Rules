@@ -1,25 +1,30 @@
 /* =========================================================
-   IT-GIRLS — OFFICIAL MEMBERSHIP RULES
-   INTERACTION SCRIPT
+   IT-GIRLS RULES — INTERACTIVE FUNCTIONS
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
     /* =====================================================
-       ACCORDION
-    ===================================================== */
+       RULE ACCORDIONS
+    ====================================================== */
 
     const rules = document.querySelectorAll(".rule");
 
-    rules.forEach((rule) => {
+    document.querySelectorAll(".rule-header").forEach(button => {
 
-        const header = rule.querySelector(".rule-header");
+        button.addEventListener("click", () => {
 
-        if (!header) return;
+            const rule = button.closest(".rule");
 
-        header.addEventListener("click", () => {
+            const isOpen = rule.classList.contains("open");
 
-            rule.classList.toggle("active");
+            rule.classList.toggle("open", !isOpen);
+
+            button.setAttribute(
+                "aria-expanded",
+                String(!isOpen)
+            );
 
         });
 
@@ -28,114 +33,127 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        EXPAND / COLLAPSE ALL
-    ===================================================== */
+    ====================================================== */
 
-    const expandButton = document.getElementById("expandAll");
+    const expandButton =
+        document.getElementById("expandAll");
 
-    if (expandButton) {
+    expandButton.addEventListener("click", () => {
 
-        expandButton.addEventListener("click", () => {
+        const allOpen = [...rules].every(rule =>
+            rule.classList.contains("open")
+        );
 
-            const anyClosed = [...rules].some(
-                rule => !rule.classList.contains("active")
+        rules.forEach(rule => {
+
+            rule.classList.toggle("open", !allOpen);
+
+            const button =
+                rule.querySelector(".rule-header");
+
+            button.setAttribute(
+                "aria-expanded",
+                String(!allOpen)
             );
-
-            rules.forEach((rule) => {
-
-                if (anyClosed) {
-                    rule.classList.add("active");
-                } else {
-                    rule.classList.remove("active");
-                }
-
-            });
-
-            expandButton.textContent =
-                anyClosed ? "Collapse all" : "Expand all";
 
         });
 
-    }
+        expandButton.textContent =
+            allOpen ? "Expand all" : "Collapse all";
+
+    });
 
 
     /* =====================================================
        SEARCH
-    ===================================================== */
+    ====================================================== */
 
-    const search = document.getElementById("search");
+    const searchInput =
+        document.getElementById("search");
 
-    if (search) {
+    searchInput.addEventListener("input", () => {
 
-        search.addEventListener("input", () => {
-
-            const query = search.value
+        const query =
+            searchInput.value
                 .toLowerCase()
                 .trim();
 
-            rules.forEach((rule) => {
+        rules.forEach(rule => {
 
-                const text = rule.textContent.toLowerCase();
+            const searchableText =
+                rule.dataset.search.toLowerCase();
 
-                if (text.includes(query)) {
+            if (
+                query === "" ||
+                searchableText.includes(query)
+            ) {
 
-                    rule.style.display = "";
+                rule.style.display = "";
 
-                } else {
+            } else {
 
-                    rule.style.display = "none";
+                rule.style.display = "none";
 
-                }
-
-            });
+            }
 
         });
 
-    }
+    });
 
 
     /* =====================================================
        MOBILE MENU
-    ===================================================== */
+    ====================================================== */
 
-    const menuButton = document.getElementById("menuButton");
-    const mobileMenu = document.getElementById("mobileMenu");
+    const menuButton =
+        document.getElementById("menuButton");
 
-    if (menuButton && mobileMenu) {
+    const mobileMenu =
+        document.getElementById("mobileMenu");
 
-        menuButton.addEventListener("click", () => {
+    menuButton.addEventListener("click", () => {
 
-            mobileMenu.classList.toggle("active");
+        mobileMenu.classList.toggle("open");
 
-        });
+        if (mobileMenu.classList.contains("open")) {
+
+            menuButton.textContent = "×";
+
+        } else {
+
+            menuButton.textContent = "☰";
+
+        }
+
+    });
 
 
-        const mobileLinks =
-            mobileMenu.querySelectorAll("a");
+    /* =====================================================
+       CLOSE MOBILE MENU WHEN LINK IS CLICKED
+    ====================================================== */
 
-        mobileLinks.forEach((link) => {
+    document
+        .querySelectorAll(".mobile-menu a")
+        .forEach(link => {
 
             link.addEventListener("click", () => {
 
-                mobileMenu.classList.remove("active");
+                mobileMenu.classList.remove("open");
+
+                menuButton.textContent = "☰";
 
             });
 
         });
 
-    }
-
 
     /* =====================================================
        BACK TO TOP
-    ===================================================== */
+    ====================================================== */
 
-    const backTop = document.getElementById("backTop");
-
-    if (backTop) {
-
-        backTop.addEventListener("click", (event) => {
-
-            event.preventDefault();
+    document
+        .getElementById("backTop")
+        .addEventListener("click", () => {
 
             window.scrollTo({
                 top: 0,
@@ -144,43 +162,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-    }
-
 
     /* =====================================================
-       HASH LINKS
-    ===================================================== */
+       OPEN RULE FROM URL HASH
+       
+       Example:
+       index.html#rule-ii
+    ====================================================== */
 
-    function openHashRule() {
+    if (window.location.hash) {
 
-        const hash = window.location.hash;
+        const target =
+            document.querySelector(window.location.hash);
 
-        if (!hash) return;
+        if (
+            target &&
+            target.classList.contains("rule")
+        ) {
 
-        const target = document.querySelector(hash);
+            target.classList.add("open");
 
-        if (!target) return;
+            const button =
+                target.querySelector(".rule-header");
 
-        if (target.classList.contains("rule")) {
+            button.setAttribute(
+                "aria-expanded",
+                "true"
+            );
 
-            target.classList.add("active");
+            setTimeout(() => {
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }, 300);
 
         }
 
-        setTimeout(() => {
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }, 100);
-
     }
-
-
-    openHashRule();
-
-    window.addEventListener("hashchange", openHashRule);
 
 });
